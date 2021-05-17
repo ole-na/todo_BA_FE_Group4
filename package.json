@@ -1,1 +1,11 @@
-{}
+{
+  "devDependencies": {
+    "prettier": "2.3.0"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "bootstrap": "^5.0.1",
+    "react-bootstrap": "^1.6.0",
+    "react-tooltip": "^4.2.19"
+  }
+}

@@ -36,3 +36,264 @@
     transform: rotate(360deg);
   }
 }
+
+
+.body {
+  display: grid;
+  /* grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));*/
+  grid-template-columns: 32% 32% 32%;
+  grid-gap: 10px;
+  justify-items: center;
+  align-items: center;
+}
+
+/* header, .todo-add {
+  grid-column: 1 / 2;
+  grid-row: 1;
+} */
+
+.todo-add {
+  grid-column: 1/4;
+  grid-row: 3/4;
+  margin-top: 30px;
+}
+
+main {
+  justify-items: stretch;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.todo-board {
+  text-align: center;
+  border: black 5px solid;
+  border: 1px solid black;
+
+}
+
+.todo-card {
+  margin: 1em;
+  background: #CCCCCC;
+  padding: 2em 1.5em;
+  border-radius: 1.5em;
+  box-shadow: black 0.5em 0.5em 1em;
+  justify-self: stretch;
+  position: relative;
+}
+
+input {
+  height: 40px;
+  line-height: 40px;
+  border-radius: 10px;
+  width: 50%;
+}
+
+/*BUTTONS *************************/
+.buttons {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+}
+
+button {
+  margin-left: 20px;
+}
+
+.button {
+  height: 40px;
+  border: none;
+  outline: none;
+  color: #fff;
+  background: #111;
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  border-radius: 10px;
+}
+
+.glow-on-hover:before {
+  content: '';
+  background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+  position: absolute;
+  top: -2px;
+  left:-2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing 20s linear infinite;
+  opacity: 0;
+  transition: opacity .3s ease-in-out;
+  border-radius: 10px;
+}
+
+.glow-on-hover:active {
+  color: #000
+}
+
+.glow-on-hover:active:after {
+  background: transparent;
+}
+
+.glow-on-hover:hover:before {
+  opacity: 1;
+}
+
+.glow-on-hover:after {
+  z-index: -1;
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #111;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+}
+
+@keyframes glowing {
+  0% { background-position: 0 0; }
+  50% { background-position: 400% 0; }
+  100% { background-position: 0 0; }
+}
+
+
+
+
+/* BUTTONS DELETE */
+.description {
+  margin-top: 50px;
+  text-align: center;
+  color: #999;
+  transition: opacity 0.3s ease;
+}
+
+.description a {
+  color: #4A9DF6;
+  text-decoration: none;
+}
+
+.btn.is-open ~ .description {
+  opacity: 0;
+}
+
+.btn {
+  display: block;
+  position: absolute;
+  top:10px;
+  left: 10px;
+  width: 200px;
+  height: 80px;
+  transition: width 0.8s cubic-bezier(0.230, 1.000, 0.320, 1.000),
+  height 0.8s cubic-bezier(0.230, 1.000, 0.320, 1.000),
+  transform 0.8s cubic-bezier(0.175, 0.885, 0.320, 1.275);
+  transform-style: preserve-3d;
+  transform-origin: 50% 50%;
+  text-align: center;
+}
+
+.btn-front {
+  border-radius: 1.5em;
+  position: absolute;
+  display: block;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  background-color: darkred;
+  color: #fff;
+  cursor: pointer;
+  backface-visibility: hidden;
+  -webkit-tap-highlight-color: rgba( 0, 0, 0, 0 );
+  transition: background 0.15s ease,
+  line-height 0.8s cubic-bezier(0.230, 1.000, 0.320, 1.000);
+}
+.btn-front:hover {
+  background-color: red;
+}
+.btn.is-open .btn-front {
+  pointer-events: none;
+  line-height: 160px;
+}
+
+.btn-back {
+  border-radius: 1.5em;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #eee;
+  color: #222;
+  transform: translateZ(-2px) rotateX(180deg);
+  overflow: hidden;
+  transition: box-shadow 0.8s ease;
+  opacity: 0;
+}
+.btn-back p {
+  margin-top: 7px;
+  margin-bottom: 7px;
+}
+.btn-back button {
+  padding: 12px 20px;
+  margin: 0 5px;
+  background-color: transparent;
+  border: 0;
+  border-radius: 10px;
+  font-size: 1em;
+  cursor: pointer;
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  transition: background 0.15s ease;
+}
+.btn-back button:focus {
+   outline: 0;
+ }
+
+.btn-back button.yes {
+  background-color: darkred;
+  color: #fff;
+}
+.btn-back button:hover {
+   background-color: red;
+ }
+
+
+.btn-back button.no {
+  color: darkred;
+}
+.btn-back button:hover {
+   background-color: #ddd;
+}
+
+
+.btn.is-open .btn-back {
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+  opacity: 1;
+}
+
+.btn[data-direction="left"] .btn-back,
+.btn[data-direction="right"] .btn-back {
+  transform: translateZ(-2px) rotateY(180deg);
+}
+
+.btn.is-open {
+  height: 103px;
+}
+
+.btn[data-direction="top"].is-open {
+  transform: rotateX(180deg);
+}
+
+.btn[data-direction="right"].is-open {
+  transform: rotateY(180deg);
+}
+
+.btn[data-direction="bottom"].is-open {
+  transform: rotateX(-180deg);
+}
+
+.btn[data-direction="left"].is-open {
+  transform: rotateY(-180deg);
+}
