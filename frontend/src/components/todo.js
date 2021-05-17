@@ -49,7 +49,7 @@ function Todo({ todo, onDescription, onDelete, onAdvance }) {
 
   return (
     <div key={todo.id} className="todo-card">
-      <h3>{todo.description}</h3>
+      <h3 class="description">{todo.description}</h3>
       <div class="buttons" ref={btnDeleteRef}>
         <button className="button glow-on-hover" onClick={onDescription}>
           Description

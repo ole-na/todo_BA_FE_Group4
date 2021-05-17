@@ -2,42 +2,6 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-
 .body {
   display: grid;
   /* grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));*/
@@ -46,11 +10,6 @@
   justify-items: center;
   align-items: center;
 }
-
-/* header, .todo-add {
-  grid-column: 1 / 2;
-  grid-row: 1;
-} */
 
 .todo-add {
   grid-column: 1/4;
@@ -95,7 +54,6 @@ input {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-
 }
 
 button {
@@ -107,7 +65,7 @@ button {
   border: none;
   outline: none;
   color: #fff;
-  background: #111;
+  background: midnightblue;
   cursor: pointer;
   position: relative;
   z-index: 0;
@@ -149,7 +107,7 @@ button {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: #111;
+  background: midnightblue;
   left: 0;
   top: 0;
   border-radius: 10px;
@@ -161,26 +119,7 @@ button {
   100% { background-position: 0 0; }
 }
 
-
-
-
 /* BUTTONS DELETE */
-.description {
-  margin-top: 50px;
-  text-align: center;
-  color: #999;
-  transition: opacity 0.3s ease;
-}
-
-.description a {
-  color: #4A9DF6;
-  text-decoration: none;
-}
-
-.btn.is-open ~ .description {
-  opacity: 0;
-}
-
 .btn {
   display: block;
   position: absolute;
