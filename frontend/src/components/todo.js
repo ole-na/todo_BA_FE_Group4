@@ -1,8 +1,9 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 function Todo({ todo, onDescription, onDelete, onAdvance }) {
-  const btnDeleteRef = useRef(null);
+  const [showDelete, addShowDelete] = useState(false);
 
+  /* const btnDeleteRef = useRef(null);
   function distance(x1, y1, x2, y2) {
     const dx = x1 - x2;
     const dy = y1 - y2;
@@ -46,11 +47,13 @@ function Todo({ todo, onDescription, onDelete, onAdvance }) {
       btn.classList.remove("is-open");
     });
   }, []);
+  */
 
   return (
     <div key={todo.id} className="todo-card">
-      <h3 class="description">{todo.description}</h3>
-      <div class="buttons" ref={btnDeleteRef}>
+      <h3 className="description">{todo.description}</h3>
+      <div className="buttons">
+        {/*<div className="buttons" ref={btnDeleteRef}>*/}
         <button className="button glow-on-hover" onClick={onDescription}>
           Description
         </button>
@@ -64,14 +67,20 @@ function Todo({ todo, onDescription, onDelete, onAdvance }) {
 
         {/*<button onClick={() => onDelete(todo)}>Delete</button>*/}
         <div className="btn">
-          <div className="btn-back">
-            <p>Are you sure you want to do that?</p>
-            <button className="yes" onClick={() => onDelete(todo)}>
-              Yes
-            </button>
-            <button className="no">No</button>
+          {showDelete && (
+            <div className="btn-back">
+              <p>Are you sure you want to do that?</p>
+              <button className="yes" onClick={() => onDelete(todo)}>
+                Yes
+              </button>
+              <button className="no" onClick={() => addShowDelete(false)}>
+                No
+              </button>
+            </div>
+          )}
+          <div className="btn-front" onClick={() => addShowDelete(true)}>
+            X
           </div>
-          <div className="btn-front">X</div>
         </div>
       </div>
     </div>
